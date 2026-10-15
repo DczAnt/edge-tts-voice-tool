@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    width:1080px; height:1440px;
+    background:#0d1117;
+    background-image:
+      radial-gradient(circle at 20% 90%, rgba(31,111,235,.10), transparent 45%),
+      repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(230,237,243,.03) 80px);
+    font-family:'Microsoft YaHei','PingFang SC',sans-serif;
+    color:#e6edf3; display:flex; flex-direction:column;
+    padding:72px 80px; overflow:hidden;
+  }
+  .tag {
+    display:inline-flex; align-items:center; gap:14px;
+    font-size:26px; letter-spacing:4px; color:#7d8590;
+  }
+  .tag .dot { width:12px; height:12px; border-radius:50%; background:#1f6feb; box-shadow:0 0 12px #1f6feb; }
+  h1 { margin-top:48px; font-size:76px; line-height:1.25; letter-spacing:1px; }
+  h1 em { font-style:normal; color:#f85149; }
+  .compare { margin-top:48px; display:flex; flex-direction:column; gap:28px; }
+  .row {
+    border-radius:16px; padding:36px 40px; border:1px solid #30363d;
+    font-family:'Cascadia Code',Consolas,monospace;
+  }
+  .row.v1 { background:rgba(248,81,73,.06); border-color:rgba(248,81,73,.25); }
+  .row.v2 { background:rgba(63,185,80,.06); border-color:rgba(63,185,80,.25); }
+  .row .ver { font-size:34px; font-weight:700; margin-bottom:18px; }
+  .row.v1 .ver { color:#f85149; }
+  .row.v2 .ver { color:#3fb950; }
+  .row .line { font-size:27px; line-height:1.9; color:#e6edf3; }
+  .row .line .k { color:#7d8590; }
+  .row .line .v { color:#e6edf3; font-weight:600; }
+  .row .line .hi { color:#f85149; font-weight:700; }
+  .row .line .ok { color:#3fb950; font-weight:700; }
+  .warn {
+    margin-top:40px; padding:32px 36px; border-radius:14px;
+    background:rgba(210,153,34,.10); border:1px solid rgba(210,153,34,.35);
+    font-size:32px; line-height:1.6;
+  }
+  .warn b { color:#d29922; }
+  .foot {
+    margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end;
+    border-top:1px solid #21262d; padding-top:36px;
+  }
+  .repo { font-family:'Cascadia Code',Consolas,monospace; font-size:30px; color:#1f6feb; font-weight:700; }
+  .idx  { font-family:'Cascadia Code',Consolas,monospace; font-size:26px; color:#30363d; letter-spacing:6px; }
+</style>
+</head>
+<body>
+  <div class="tag"><span class="dot"></span>edge-tts · 踩坑实录 <span style="color:#1f6feb">#02</span></div>
+
+  <h1>v1 → v2<br><em>不只是改个前缀</em></h1>
+
+  <div class="compare">
+    <div class="row v1">
+      <div class="ver">v1 · edge-tts 7.2.8</div>
+      <div class="line"><span class="k">SEC_MS_GEC_VERSION =</span> <span class="hi">"1-143.0.3650.75"</span></div>
+      <div class="line"><span class="k">drm.py</span> <span class="v">160 行</span> · <span class="k">标准 SHA256</span></div>
+      <div class="line"><span class="k">服务端响应</span> <span class="hi">403 Forbidden</span></div>
+    </div>
+    <div class="row v2">
+      <div class="ver">v2 · edge-tts 7.3.1</div>
+      <div class="line"><span class="k">SEC_MS_GEC_VERSION =</span> <span class="ok">"2-143.0.3650.75"</span></div>
+      <div class="line"><span class="k">drm.py</span> <span class="v">610 行</span> · <span class="k">定制 SHA256 + CS64 校验和</span></div>
+      <div class="line"><span class="k">服务端响应</span> <span class="ok">200 OK</span></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <b>想 monkey-patch 前缀绕过？</b><br>
+    不行——v2 篡改了 SHA256 轮常量 + 加了 CS64 校验，算法本体全变了。
+  </div>
+
+  <div class="foot">
+    <span class="repo">github.com/DczAnt/edge-tts-voice-tool</span>
+    <span class="idx">02 / 03</span>
+  </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    width:1080px; height:1440px;
+    background:#0d1117;
+    background-image:
+      radial-gradient(circle at 80% 10%, rgba(31,111,235,.12), transparent 45%),
+      repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(230,237,243,.03) 80px),
+      repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(230,237,243,.03) 80px);
+    font-family:'Microsoft YaHei','PingFang SC',sans-serif;
+    color:#e6edf3; display:flex; flex-direction:column;
+    padding:72px 80px; overflow:hidden;
+  }
+  .tag {
+    display:inline-flex; align-items:center; gap:14px;
+    font-size:26px; letter-spacing:4px; color:#7d8590;
+  }
+  .tag .dot { width:12px; height:12px; border-radius:50%; background:#f85149; box-shadow:0 0 12px #f85149; }
+  .terminal {
+    margin-top:56px; border-radius:16px; overflow:hidden;
+    border:1px solid #30363d; box-shadow:0 24px 60px rgba(0,0,0,.55);
+  }
+  .term-bar {
+    background:#161b22; padding:22px 28px; display:flex; align-items:center; gap:12px;
+    border-bottom:1px solid #30363d;
+  }
+  .term-bar i { width:20px; height:20px; border-radius:50%; display:block; }
+  .r{background:#f85149}.y{background:#d29922}.g{background:#3fb950}
+  .term-title { margin-left:16px; font-family:'Cascadia Code',Consolas,monospace; font-size:22px; color:#7d8590; }
+  .term-body {
+    background:#0d1117; padding:44px 48px; min-height:520px;
+    font-family:'Cascadia Code',Consolas,monospace; font-size:28px; line-height:1.85;
+  }
+  .p { color:#3fb950; } .cmd { color:#e6edf3; } .dim { color:#7d8590; }
+  .err { color:#f85149; font-weight:700; }
+  .err-line {
+    margin:26px -20px; padding:22px 20px; background:rgba(248,81,73,.08);
+    border-left:6px solid #f85149; border-radius:6px; font-size:30px;
+  }
+  h1 { margin-top:64px; font-size:92px; line-height:1.25; letter-spacing:2px; }
+  h1 em { font-style:normal; color:#f85149; }
+  .sub { margin-top:26px; font-size:38px; color:#7d8590; line-height:1.6; }
+  .sub b { color:#e6edf3; font-weight:600; }
+  .foot {
+    margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end;
+    border-top:1px solid #21262d; padding-top:36px;
+  }
+  .repo { font-family:'Cascadia Code',Consolas,monospace; font-size:30px; color:#1f6feb; font-weight:700; }
+  .idx  { font-family:'Cascadia Code',Consolas,monospace; font-size:26px; color:#30363d; letter-spacing:6px; }
+</style>
+</head>
+<body>
+  <div class="tag"><span class="dot"></span>edge-tts · 踩坑实录 <span style="color:#1f6feb">#01</span></div>
+
+  <div class="terminal">
+    <div class="term-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span class="term-title">python — bash</span></div>
+    <div class="term-body">
+      <div><span class="p">$</span> <span class="cmd">python src/main.py</span></div>
+      <div><span class="dim"># 生成语音...</span></div>
+      <div class="err-line"><span class="err">WSServerHandshakeError: 403</span></div>
+      <div><span class="dim">message='Invalid response status'</span></div>
+      <div><span class="dim">url='wss://speech.platform.bing.com/...'</span></div>
+      <div><span class="dim"># 代码一行没改，昨天还能用</span></div>
+    </div>
+  </div>
+
+  <h1>之前好好的<br><em>突然 403</em></h1>
+  <div class="sub">edge-tts 语音合成，<b>微软悄悄换了鉴权算法</b>。<br>旧版 token 直接被拒，你都不知道。</div>
+
+  <div class="foot">
+    <span class="repo">github.com/DczAnt/edge-tts-voice-tool</span>
+    <span class="idx">01 / 03</span>
+  </div>
+</body>
+</html>
