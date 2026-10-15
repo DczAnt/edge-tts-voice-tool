@@ -1,0 +1,5 @@
+# 运行依赖
+edge-tts>=7.3.1
+
+# 打包工具
+pyinstaller>=6.0

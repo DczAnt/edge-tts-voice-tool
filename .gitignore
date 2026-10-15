@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+
+# PyInstaller 构建产物（exe 通过 release 分发，不入库）
+build/
+dist/
+*.spec
+
+# 用户运行时配置（每次启动自动生成）
+config.json
+
+# 临时测试产物
+test_*.mp3
+*.tmp
+
+# IDE
+.vscode/
+.idea/
